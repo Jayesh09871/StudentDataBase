@@ -68,11 +68,50 @@ public class StudentDatabase{
                         i.viewStudent(); 
                     }
                     break;
+
             case 3:
-                   System.out.println("");
-                   
-                }
+                    System.out.print("Enter roll number to search: ");
+                    int roll = sc.nextInt();
+
+                    Student data = database.get(roll); 
+                    if(data!=null){ 
+                        data.viewStudent();
+                    }
+ 
+                    else{ 
+                        System.out.println("Student not found"); 
+                    }
+
+                    System.out.println("****************");
+                    break;
+
+            case 4:
+                    int totalStudent = database.size();
+                    int totalMarks = 0;
+
+                    for (Student j : database.values()) {
+                        totalMarks =  totalMarks + j.marks;
+                    }
+
+                    double average = (double) totalMarks / totalStudent;
+
+                    System.out.println("Average Marks: " + average);
+                    break;
+
+            case 5:
+                    System.exit(0); 
+                    break;
+
+            default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+
             }
+        }   
+    }
+    catch(Exception e){
+    System.out.println(e.getMessage());
+    }
+    
 } 
 
 }
